@@ -1,35 +1,9 @@
 /*
-/* stringa figa, target a cui arrivare (R2 valore ohm resistenza, luxF aumenta per precisione)/*
-const double k =10.0/1024;
-const double luxFactor = 500000;
-const double R2 = 10000;
-const double LowLightLimit = 200; 
-const double B = 1.3*pow(10.0,7);
-const double m = -1.4;
-const int LED = 10;
- 
-double light_intensity (int RawADC0) {  
-    double V2 = k*RawADC0;
-    double R1 = (5.0/V2 - 1)*R2;
-    double lux = B*pow(R1,m);
-    return lux;} 
-void setup() {
-    Serial.begin(9600);
-    pinMode(LED, OUTPUT);
-  } 
-void loop() {
-    double intensity = light_intensity(analogRead(0));
-    if (intensity < LowLightLimit) {
-            digitalWrite(LED, HIGH);
-        } else {
-            digitalWrite(LED, LOW);
-        }
-    Serial.println(intensity);
-    delay(1000);
-  }
+Dalla A0 alla A1 prese per sensori di roba esterna
+A2 porta per altra roba
 */
 
-int lumiPin = A0;
+int lumiPinIN = A0;
 int valFotor = 0;
 int greenLed = 1;
 int sblip = 100;
@@ -41,7 +15,7 @@ void setup() {
   /*pinMode(luminosità,*/
   Serial.begin(9600); // per test
   pinMode(greenLed, OUTPUT);
-  pinMode(lumiPin, INPUT);
+  pinMode(lumiPinIN, INPUT);
 }
 
 void loop() {
@@ -49,7 +23,7 @@ void loop() {
    delay(mblip);
    digitalWrite(greenLed, LOW);
    delay(mblip);
-   lumiVal = analogRead(lumiPin);
+   lumiVal = analogRead(lumiPinIN);
    Serial.print("sensor =");
    Serial.print(lumiVal);
    delay(mntblip);
