@@ -1,2 +1,2 @@
 # orto_Arduino
-folder per gli sketch per microcontroller per orto e derivati
+folder con sketch per microcontroller per orto, giardino e derivati
